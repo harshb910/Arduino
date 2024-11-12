@@ -30,12 +30,6 @@ void setup() {
   // Turn on the backlight
   lcd.backlight();
 
-  // Display a message on the LCD
-  lcd.setCursor(0, 0);        // Set the cursor to column 0, row 0
-  lcd.print("Use, Me!");
-  lcd.setCursor(0, 1); // Move to the second row
-  lcd.print("WasteSegregation");
-
   pinMode(IRSensor_signal, INPUT); // for detecting object
   pinMode(MetalSensor_signal, INPUT); // for detecting metal
   pinMode(Buzzer, OUTPUT); // for output
@@ -51,6 +45,7 @@ void setup() {
 void loop() {
   // Display a message on the LCD
   lcd.clear(); // Clear the LCD screen
+  delay(200);   // Delay for LCD stability
   lcd.setCursor(0, 0); // Set cursor to the beginning of the first line
   lcd.print("Use Me!");
   lcd.setCursor(0, 1); // Move to the second row
@@ -71,6 +66,7 @@ void loop() {
       // metal present
       Serial.println("Metal Detected");
       lcd.clear(); // Clear the LCD screen
+      delay(200);   // Delay for LCD stability
       lcd.setCursor(0, 0); // Set cursor to the beginning of the first line
       // Display a message on the LCD
       lcd.print("Metal Waste");
@@ -88,6 +84,7 @@ void loop() {
         // wet waste
         Serial.println("Wet Waste Detected");
         lcd.clear(); // Clear the LCD screen
+        delay(200);   // Delay for LCD stability
         lcd.setCursor(0, 0); // Set cursor to the beginning of the first line
         // Display a message on the LCD
         lcd.print("Wet Waste");
@@ -100,6 +97,7 @@ void loop() {
         // Dry Waste
         Serial.println("Dry Waste Detected");
         lcd.clear(); // Clear the LCD screen
+        delay(200);   // Delay for LCD stability
         lcd.setCursor(0, 0); // Set cursor to the beginning of the first line
         // Display a message on the LCD
         lcd.print("Dry Waste");
@@ -115,8 +113,9 @@ void loop() {
     // object is not present
     Serial.println("Object is not present");
   }
-  delay(1000);
+  delay(800);
   lcd.clear();
+  delay(200);   // Delay for LCD stability
 }
 
 void TurnOnBuzzer(){
@@ -134,7 +133,7 @@ void segregate(String waste){
     bottom_lid.write(170);
     delay(2000);
     bottom_lid.write(0);
-    delay(500);
+    delay(1500);
     container.write(90);
   }else if(waste == WET){
     container.write(150);
@@ -142,7 +141,7 @@ void segregate(String waste){
     bottom_lid.write(170);
     delay(2000);
     bottom_lid.write(0);
-    delay(500);
+    delay(1500);
     container.write(90);
   }else{
     delay(1000);
