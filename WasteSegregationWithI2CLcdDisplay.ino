@@ -47,7 +47,7 @@ void loop() {
   lcd.clear(); // Clear the LCD screen
   delay(200);   // Delay for LCD stability
   lcd.setCursor(0, 0); // Set cursor to the beginning of the first line
-  lcd.print("Use Me!");
+  lcd.print("MadeBy:Chaitanya");
   lcd.setCursor(0, 1); // Move to the second row
   lcd.print("WasteSegregation");
 
